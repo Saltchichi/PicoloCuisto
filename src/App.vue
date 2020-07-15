@@ -1,17 +1,20 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo-no-bg.png" />
-    <Accueil msg="Welcome to PicoloCuisto's Website" />
-  </div>
+  <section>
+    <NavBar></NavBar>
+    <router-view />
+  </section>
 </template>
 
 <script>
-import Accueil from "./components/Accueil.vue";
+import NavBar from "./components/NavBar.vue";
 
 export default {
   name: "App",
   components: {
-    Accueil,
+    NavBar: NavBar,
+  },
+  data: function() {
+    return {};
   },
 };
 </script>
