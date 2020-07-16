@@ -22,7 +22,7 @@
 </template>
 
 <script>
-// import router from "../router";
+import router from "../router";
 import EventBus from "./EventBus.vue";
 import axios from "axios";
 
@@ -38,31 +38,29 @@ export default {
   methods: {
     login() {
       if (this.email != "" && this.password != "") {
-        console.log("getUtilisateurByEmail");
-        // this.getUtilisateurByEmail(this.email, this.password);
+        this.getUtilisateurByEmail(this.email, this.password);
       } else {
         alert("Please fill email/password");
       }
     },
     getUtilisateurByEmail(email, motdepasse) {
       axios
-        .post("https://api.alexandremonschein.fr/utilisateur", {
+        .post("http://picolocuisto.alexandremonschein.fr/user", {
           email: email,
           motdepasse: motdepasse,
         })
-        .then(response => {
+        .then((response) => {
+          console.log(response);
           if (response.data == true) {
             localStorage.setItem("currentUser", email);
-            // router.push({ name: "Competition" });
-            // this.emitMethod();
+            router.push({ name: "Recipes" });
+            this.emitMethod();
           } else {
             alert("The email and/or password is incorrect");
           }
         })
-        .catch(() => {
-          alert(
-            "Vous n'avez pas la connexion pour vous synchroniser avec la BDD distante. Veuillez redémarrer l'appli avec de la connexion disponible.",
-          );
+        .catch((err) => {
+          console.log(err);
         });
     },
     emitMethod() {

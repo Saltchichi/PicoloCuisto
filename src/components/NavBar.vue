@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark" v-if="auth=='loggedin'">
     <div class="container">
-      <a class="navbar-brand" href=""><img src="../assets/logo-no-bg.png" alt="logo" width="35"></a>
+      <router-link class="linker" to=/recipes><img src="../assets/logo-no-bg.png" alt="logo" width="35"></router-link>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07"
         aria-controls="navbarsExample07" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
