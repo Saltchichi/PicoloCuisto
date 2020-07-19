@@ -1,9 +1,10 @@
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
 require("../node_modules/bootstrap/dist/css/bootstrap.css");
-require("../node_modules/font-awesome/css/font-awesome.css");
 //inclue datatbles + jquery
 Vue.config.productionTip = false;
 
