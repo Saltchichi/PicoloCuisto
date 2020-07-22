@@ -9,13 +9,15 @@
       <td>{{ recipes.nom_fr }}</td>
       <td>{{ recipes.presentation_fr }}</td>
       <td>Pour {{ recipes.cb_personne }} personnes</td>
+      <td>
+        <button v-on:click="consult(recipes)">Consulter la recette</button>
+      </td>
     </tr>
   </div>
 </template>
 
 <script>
-// import router from "../router";
-// import EventBus from "./EventBus.vue";
+import router from "../router";
 import axios from "axios";
 
 export default {
@@ -35,6 +37,12 @@ export default {
       .catch((err) => {
         console.log(err);
       });
+  },
+  methods: {
+    consult(recipe) {
+      localStorage.setItem("id_recette_to_consult", recipe.id_recette);
+      router.push({ name: "viewRecipe" });
+    }
   }
 };
 </script>
