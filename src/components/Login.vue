@@ -54,17 +54,16 @@ export default {
   methods: {
     login() {
       if (this.email != "" && this.password != "") {
-        this.getUtilisateurByEmail(this.email, this.password);
+        this.verifyUser(this.email, this.password);
       } else {
         alert("Please fill email/password");
       }
     },
-    getUtilisateurByEmail(email, motdepasse) {
+    verifyUser(email, password) {
       axios
-        .post("http://picolocuisto.alexandremonschein.fr/user", {
-          method: "login",
+        .post("https://picolocuisto.alexandremonschein.fr/checklogin", {
           email: email,
-          motdepasse: motdepasse
+          password: password
         })
         .then(response => {
           console.log(response);

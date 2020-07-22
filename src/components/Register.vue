@@ -1,45 +1,108 @@
 <template>
-     <div class="login-container">
-        <form>
-            <div class="login-control">
-                <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Adresse mail">
-            </div>
+  <div class="login-container">
+    <form v-on:submit.prevent="register">
+      <div class="login-control">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="Adresse mail"
+          v-model="email"
+        />
+      </div>
 
-            <div class="login-control">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" placeholder="Mot de passe">
-            </div>
+      <div class="login-control">
+        <label for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Mot de passe"
+          v-model="password"
+        />
+      </div>
 
-            <div class="login-control">
-                <label for="password">Confirmation mot de passe</label>
-                <input type="password" id="password" placeholder="Mot de passe">
-            </div>
+      <div class="login-control">
+        <label for="password_conf">Confirmation mot de passe</label>
+        <input
+          type="password"
+          id="password_conf"
+          placeholder="Confirmer mot de passe"
+          v-model="password_conf"
+        />
+      </div>
+      <button class="btn">Créer un compte</button>
+      <small>Vous possédez déjà un compte ? <router-link class="linker" to=/>Connexion</router-link></small>
+    </form>
 
-            <button class="btn">Créer un compte</button>
-
-            <small>Pas de compte ? <router-link class="linker" to=/>Créer un compte</router-link></small>
-        </form>
-
-        <div class="features">
-            <div class="feature">
-                <i class="fas fa-utensils"></i>
-                <h3>Stocker vos recettes</h3>
-                <p>Stocker des milliers de recettes pour ne plus en perdre une miette</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-sort"></i>
-                <h3>Tri automatique</h3>
-                <p>Toutes les recettes sont triés en fonction de leur type</p>
-            </div>
-            <div class="feature">
-                <i class="fas fa-filter"></i>
-                <h3>Filtres</h3>
-                <p>Filtrer le nom de vos plat pour les retrouvés d'un simple clic</p>
-            </div>
-        </div>
+    <div class="features">
+      <div class="feature">
+        <i class="fas fa-utensils"></i>
+        <h3>Stocker vos recettes</h3>
+        <p>
+          Stocker des milliers de recettes pour ne plus en perdre une miette
+        </p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-sort"></i>
+        <h3>Tri automatique</h3>
+        <p>Toutes les recettes sont triés en fonction de leur type</p>
+      </div>
+      <div class="feature">
+        <i class="fas fa-filter"></i>
+        <h3>Filtres</h3>
+        <p>Filtrer le nom de vos plat pour les retrouvés d'un simple clic</p>
+      </div>
     </div>
+  </div>
 </template>
+
+<script>
+import router from "../router";
+import axios from "axios";
+
+export default {
+  name: "Register",
+  data() {
+    return {
+      email: "",
+      password: "",
+      password_conf: ""
+    };
+  },
+  methods: {
+    register() {
+      if (this.email != "" && this.password != "" && this.password_conf != "") {
+        if (this.password == this.password_conf) {
+          this.addUser(this.email, this.password);
+        } else {
+          alert("Password don't match");
+        }
+      } else {
+        alert("Please fill email/password");
+      }
+    },
+    addUser(email, password) {
+      axios
+        .post("https://picolocuisto.alexandremonschein.fr/createAccount", {
+          email: email,
+          password: password
+        })
+        .then((response) => {
+          console.log(response);
+          if (response.data == true) {
+            alert("Account created");
+            router.push({ name: "Login" });
+          } else {
+            alert("Error, account not created");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  }
+};
+</script>
 
 <style scoped>
 .login-container a {
