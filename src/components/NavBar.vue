@@ -17,7 +17,7 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
-        <div class="form-inline my-2 my-md-0 mr-5">
+        <div class="form-inline my-2 my-md-0 mr-3">
           <ul class="nav">
             <li class="dropdown">
               <div data-toggle="dropdown">
@@ -27,7 +27,7 @@
               </div>
               <ul class="dropdown-menu">
                 <li style="background-color: #343a40;">
-                  <a style="color: white;" href="">Déconexion</a>
+                  <a style="color: white;" href="">Déconnexion</a>
                 </li>
               </ul>
             </li>
@@ -36,10 +36,10 @@
       </div>
     </nav>
     <nav class="navbar navbar-expand navbar-light bg-light">
-      <div class="navbar-brand ml-1">Mes recettes</div>
+      <div class="navbar-brand ml-3">Mes recettes</div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
-        <div class="form-inline my-2 my-md-0 mr-5">
+        <div class="form-inline my-2 my-md-0 mr-3">
           <button class="nouvelle_recette">Nouvelle recette</button>
         </div>
       </div>
@@ -101,4 +101,5 @@ export default {
 .navbar .dropdown-menu {
   margin-top: 0;
 }
+
 </style>
