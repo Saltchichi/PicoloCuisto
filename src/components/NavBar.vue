@@ -40,7 +40,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
         <div class="form-inline my-2 my-md-0 mr-3">
-          <button class="nouvelle_recette">Nouvelle recette</button>
+          <a href="#/createrecipe" style="text-decoration:none"><button class="nouvelle_recette">Nouvelle recette</button></a>
         </div>
       </div>
     </nav>
