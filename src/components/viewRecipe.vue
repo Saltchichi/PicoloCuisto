@@ -1,154 +1,75 @@
 <template>
   <section>
-    <div class="receipe-post-area section-padding-80" v-for="rec in recipe" :key="rec">
-      <div class="container">
-        <div class="row mt-3">
-          <div class="col-12">
-            <img
-              v-bind:src="getImgUrl(rec.chemin_image)"
-              alt="Image recette"
-              class="rounded"
-              width="1110px"
-            />
+    <div class="container" v-for="rec in recipe" :key="rec">
+      <div class="row justify-content-center my-4">
+        <div class="col-6">
+          <img
+            v-bind:src="getImgUrl(rec.chemin_image)"
+            alt="Image recette"
+            class="img_recipe rounded"
+          />
+        </div>
+        <div class="col-6">
+          <h2 class="mb">{{ rec.nom_fr }}</h2>
+          <div class="ratings mb-5">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="far fa-star" aria-hidden="true"></i>
+          </div>
+          <div class="recipe-duration">
+            <h6>
+              <i class="fas fa-clock" style="font-size:17px"></i>
+              <span class="ml-1">{{ displayHour(rec.heure) }} {{ displayMinute(rec.minute) }}</span>
+            </h6>
+            <h6 class="my-4">
+              <i class="fas fa-user" style="font-size:20px"></i>
+              <span class="ml-1">{{ rec.cb_personne }} personnes</span>
+            </h6>
+            <h6>
+              <i class="fas fa-utensils" style="font-size:20px"></i>
+              <span class="ml-2">Dessert (A dynamiser)</span>
+            </h6>
           </div>
         </div>
       </div>
-      <div class="receipe-content-area">
-        <div class="container">
-          <div class="row">
-            <div class="col-12 col-md-8">
-              <div class="receipe-headline my-3">
-                <h2 class="mb-4">{{ rec.nom_fr }}</h2>
-                <div class="receipe-duration">
-                  <h6 class="ml-2"><i class="far fa-clock"></i> {{ displayHour(rec.heure) }} {{ displayMinute(rec.minute) }}</h6>
-                  <h6 class="ml-2">Pour {{ rec.cb_personne }} personnes</h6>
-                </div>
-              </div>
-            </div>
-            <div class="col-12 col-md-4">
-              <div class="receipe-ratings text-right my-3">
-                <div class="ratings">
-                  <i class="fas fa-star" aria-hidden="true"></i>
-                  <i class="fas fa-star" aria-hidden="true"></i>
-                  <i class="fas fa-star" aria-hidden="true"></i>
-                  <i class="far fa-star" aria-hidden="true"></i>
-                  <i class="far fa-star" aria-hidden="true"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-12 col-lg-8 mt-2">
-              <div class="single-preparation-step d-flex">
-                <h4>01.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui.
-                  Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in
-                  iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                  purus.
-                  Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                  mus.
-                </p>
-              </div>
+      <div class="row">
+        <div class="col-12">
+          <h4>Description</h4>
+          <p>{{rec.presentation_fr}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-8 col-lg-8 mt-2">
+          <h4 class="mb-3">Préparation</h4>
+          <ol>
+            <li>{{rec.deroulement_fr}}</li>
+            <li>Rajouter la farine</li>
+            <li>Mélanger la pate</li>
+            <li>Kiffer la vie</li>
+          </ol>
+        </div>
+        <div class="col-4 border-left">
+          <h4>Ingrédients (A dynamiser)</h4>
+          <ul>
+            <li>
+              <strong>200g</strong> de saumon 
+            </li>
 
-              <div class="single-preparation-step d-flex">
-                <h4>02.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui.
-                  Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in
-                  iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                  purus.
-                  Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                  mus.
-                </p>
-              </div>
-
-              <div class="single-preparation-step d-flex">
-                <h4>03.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui.
-                  Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in
-                  iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                  purus.
-                  Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                  mus.
-                </p>
-              </div>
-
-              <div class="single-preparation-step d-flex">
-                <h4>04.</h4>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum nec varius dui.
-                  Suspendisse potenti. Vestibulum ac pellentesque tortor. Aenean congue sed metus in
-                  iaculis. Cras a tortor enim. Phasellus posuere vestibulum ipsum, eget lobortis
-                  purus.
-                  Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus
-                  mus.
-                </p>
-              </div>
-            </div>
-
-            <div class="col-12 col-lg-4">
-              <div class="ingredients">
-                <h4>Ingredients</h4>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck1" />
-                  <label class="custom-control-label" for="customCheck1">4 Tbsp (57 gr) butter</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck2" />
-                  <label class="custom-control-label" for="customCheck2">2 large eggs</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck3" />
-                  <label class="custom-control-label" for="customCheck3">
-                    2 yogurt containers
-                    granulated
-                    sugar
-                  </label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck4" />
-                  <label class="custom-control-label" for="customCheck4">
-                    1 vanilla or plain yogurt,
-                    170g
-                    container
-                  </label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck5" />
-                  <label class="custom-control-label" for="customCheck5">
-                    2 yogurt containers
-                    unbleached
-                    white flour
-                  </label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck6" />
-                  <label class="custom-control-label" for="customCheck6">
-                    1.5 yogurt containers
-                    milk
-                  </label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck7" />
-                  <label class="custom-control-label" for="customCheck7">1/4 tsp cinnamon</label>
-                </div>
-
-                <div class="custom-control custom-checkbox">
-                  <input type="checkbox" class="custom-control-input" id="customCheck8" />
-                  <label class="custom-control-label" for="customCheck8">1 cup fresh blueberries</label>
-                </div>
-              </div>
-            </div>
-          </div>
+            <li>
+              <strong>2 branches</strong> de ciboulette
+            </li>
+            <li>
+              <strong>250g</strong> de farine
+            </li>
+            <li>
+              <strong>2 cas</strong> de paprika
+            </li>
+            <li>
+              <strong>1 pincée</strong> de sel
+            </li>
+          </ul>
         </div>
       </div>
     </div>
@@ -188,7 +109,7 @@ export default {
         console.log(error);
       }
     },
-     displayHour(hour) {
+    displayHour(hour) {
       if (hour == null) {
         return "";
       } else {
@@ -198,11 +119,18 @@ export default {
     displayMinute(min) {
       if (min == null) {
         return "";
+      } else {
+        return min + " min";
       }
-      else {
-        return min + ' min';
-      }
-    },
+    }
   }
 };
 </script>
+<style>
+li {
+  margin-bottom: 5px;
+}
+.img_recipe {
+  width: 100%;
+}
+</style>

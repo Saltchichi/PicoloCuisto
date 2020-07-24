@@ -1,7 +1,7 @@
 <template>
   <section v-if="auth == 'loggedin'">
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <a class="navbar-brand" href="#/recipes">
+      <a class="navbar-brand ml-2" href="#/recipes">
         <img src="../assets/logo-no-bg.png" alt="logo" width="75" />
       </a>
       <button
