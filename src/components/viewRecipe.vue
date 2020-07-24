@@ -20,7 +20,7 @@
               <div class="receipe-headline my-3">
                 <h2 class="mb-4">{{ rec.nom_fr }}</h2>
                 <div class="receipe-duration">
-                  <h6 class="ml-2">Temps: {{ rec.heure }} h {{ rec.minute }}</h6>
+                  <h6 class="ml-2"><i class="far fa-clock"></i> {{ displayHour(rec.heure) }} {{ displayMinute(rec.minute) }}</h6>
                   <h6 class="ml-2">Pour {{ rec.cb_personne }} personnes</h6>
                 </div>
               </div>
@@ -186,6 +186,21 @@ export default {
         return require("../assets/" + img);
       } catch (error) {
         console.log(error);
+      }
+    },
+     displayHour(hour) {
+      if (hour == null) {
+        return "";
+      } else {
+        return hour + " h";
+      }
+    },
+    displayMinute(min) {
+      if (min == null) {
+        return "";
+      }
+      else {
+        return min + ' min';
       }
     },
   }
