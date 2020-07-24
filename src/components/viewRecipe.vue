@@ -12,11 +12,7 @@
         <div class="col-md">
           <h2 class="mb">{{ rec.nom_fr }}</h2>
           <div class="ratings mb-5">
-            <i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i>
-            <i class="fas fa-star" aria-hidden="true"></i>
-            <i class="far fa-star" aria-hidden="true"></i>
-            <i class="far fa-star" aria-hidden="true"></i>
+            <i class="fas fa-star" aria-hidden="true" v-for="index in 5" :key="index"></i>A dynamiser
           </div>
           <div class="recipe-duration">
             <h6>
