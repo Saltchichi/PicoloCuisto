@@ -2,14 +2,14 @@
   <section>
     <div class="container" v-for="rec in recipe" :key="rec">
       <div class="row justify-content-center my-4">
-        <div class="col-6">
+        <div class="col-md">
           <img
             v-bind:src="getImgUrl(rec.chemin_image)"
             alt="Image recette"
             class="img_recipe rounded"
           />
         </div>
-        <div class="col-6">
+        <div class="col-md">
           <h2 class="mb">{{ rec.nom_fr }}</h2>
           <div class="ratings mb-5">
             <i class="fas fa-star" aria-hidden="true"></i>
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-8 col-lg-8 mt-2">
+        <div class="col-md-8 mt-2">
           <h4 class="mb-3">Préparation</h4>
           <ol>
             <li>{{rec.deroulement_fr}}</li>
@@ -50,7 +50,7 @@
             <li>Kiffer la vie</li>
           </ol>
         </div>
-        <div class="col-4 border-left">
+        <div class="col-md-4 border-left">
           <h4>Ingrédients (A dynamiser)</h4>
           <ul>
             <li>
