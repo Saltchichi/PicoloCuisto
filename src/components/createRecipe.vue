@@ -1,6 +1,11 @@
 <template>
   <div class="container my-4">
     <form>
+      <div class="row justify-content-center my-4">
+        <div class="col-8">
+          <h2 class="text-center">Nouvelle recette</h2>
+        </div>
+      </div>
       <div class="row justify-content-center">
         <div class="col-8">
           <div class="form-group">
@@ -103,7 +108,7 @@
           </div>
         </div>
       </div>
-      <div class="row justify-content-center my-3 ">
+      <div class="row justify-content-center my-3">
         <div class="col-2">
           <div class="form-group">
             <button type="submit" class="enregistrer">Enregistrer</button>
