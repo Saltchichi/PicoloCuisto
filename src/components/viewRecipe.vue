@@ -5,7 +5,7 @@
         <div class="row mt-3">
           <div class="col-12">
             <img
-              src="../assets/tarte_aux_framboises.jpg"
+              v-bind:src="getImgUrl(rec.chemin_image)"
               alt="Image recette"
               class="rounded"
               width="1110px"
@@ -180,6 +180,14 @@ export default {
         console.log(err);
       });
   },
-  methods: {}
+  methods: {
+    getImgUrl(img) {
+      try {
+        return require("../assets/" + img);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+  }
 };
 </script>
