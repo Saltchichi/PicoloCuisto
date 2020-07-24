@@ -4,6 +4,7 @@ import Login from "../components/Login.vue";
 import Recipes from "../components/Recipes.vue";
 import Register from "../components/Register.vue";
 import viewRecipe from "../components/viewRecipe.vue";
+import createRecipe from "../components/createRecipe.vue";
 Vue.use(Router);
 
 export default new Router({
@@ -27,6 +28,11 @@ export default new Router({
       path: "/viewrecipe",
       name: "viewRecipe",
       component: viewRecipe
+    },
+    {
+      path: "/createrecipe",
+      name: "createRecipe",
+      component: createRecipe
     }
   ]
 });
