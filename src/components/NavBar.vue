@@ -83,6 +83,10 @@ export default {
   padding: 5px 15px;
   width: 100%;
 }
+
+.nouvelle_recette:hover {
+  background-color: #e90844;
+}
 .dropdown-menu {
   background-color: #343a40;
   padding: 5% 10%;
